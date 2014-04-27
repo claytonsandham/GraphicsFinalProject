@@ -154,7 +154,7 @@ void RunRayPolyTests() {
 	RunTest(
 		"And turns",
 		Test_RayPolyIntersect(HALFX_VECTOR, NEGZ_VECTOR, POINT_N2N10, POINT_2N10, POINT_010, BACK5ANDTURN_MATRIX),
-		TEN_KAZILLION); // TODO change this to the right number
+		5.5); // TODO change this to the right number
 }
 
 void RunRayCubeTests() {
@@ -191,6 +191,7 @@ void RunRayCubeTests() {
 
 void RunYourTests() {
 	// It can be very useful to put tests of your own here. The unit tests above do NOT test everything!
+	RunTest("Custom tri 1", Test_RayPolyIntersect(vec3(0,0,0),vec3(0,0,1),vec3(0,0,0),vec3(0.5,10,0),vec3(0,10,0.5),mat4(1.0f)),-1.0); //ray origin is on the polygon (tests epsilon value)
 }
 
 void RunGradingTests() {
