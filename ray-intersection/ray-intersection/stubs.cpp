@@ -49,7 +49,7 @@ double Test_RayPolyIntersect(const vec3& P0, const vec3& V0, const vec3& p1, con
 
 	vec3 E = vec3((inverse(T) * vec4(P0,1))); //Transform the ray origin
 	mat4 cMult = mat4(1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,1); //Prepare to make C*
-	vec3 D = vec3((inverse(matrixCompMult(T,cMult)) * vec4(V0,0))); //Transform the ray direction
+	vec3 D = vec3(inverse(matrixCompMult(T,cMult)) * vec4(V0,0)); //Transform the ray direction
 	vec3 v1 = p3 - p1; //prep for Normal vector calc
 	vec3 v2 = p3 - p2;
 	vec3 N = cross(v1,v2); //calculate the normal vector
@@ -95,5 +95,61 @@ double Test_RayCubeIntersect(const vec3& P0, const vec3& V0, const mat4& T) {
 	// TODO fill this in.
 	// See the documentation of this function in stubs.h.
 
-	return -1;
+	float Tnear = -FLT_MAX; //"Negative Infinity"
+	float Tfar  = FLT_MAX; //"Infinity"
+	float T1, T2;
+	vec3 E = vec3(inverse(T) * vec4(P0,1)); //Transform the ray's origin
+	mat4 cMult = mat4(1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,1); //Prepare to transform the direction
+	vec3 D = vec3(inverse(matrixCompMult(T,cMult))*vec4(V0,0)); //Transform the ray's direction
+	//Slab Intersection for X slabs
+	if (D.x == 0) {
+		if (E.x < -0.5 || E.x > 0.5)
+			return -1;
+	}
+	else {
+		T1 = (-0.5f - E.x)/D.x;
+		T2 = (0.5f - E.x)/D.x;
+		if (Test_T1T2(T1, T2, Tnear, Tfar))
+			return -1;
+	}
+	//Slab Intersection for Y slabs
+	if (D.y == 0) {
+		if (E.y < -0.5 || E.y > 0.5)
+			return -1;
+	}
+	else {
+		T1 = (-0.5f - E.y)/D.y;
+		T2 = (0.5f - E.y)/D.y;
+		if (Test_T1T2(T1, T2, Tnear, Tfar))
+			return -1;
+	}
+	//Slab Intersection for Z slabs
+	if (D.z == 0) {
+		if (E.z < -0.5 || E.z > 0.5)
+			return -1;
+	}
+	else {
+		T1 = (-0.5f - E.z)/D.z;
+		T2 = (0.5f - E.z)/D.z;
+		if (Test_T1T2(T1, T2, Tnear, Tfar))
+			return -1;
+		return Tnear;
+	}
+}
+
+bool Test_T1T2(float& T1, float&T2, float& Tnear, float& Tfar) {
+	if (T1 > T2) {
+		float temp = T1;
+		T1 = T2;
+		T2 = temp;
+	}
+	if (T1 > Tnear)
+		Tnear = T1;
+	if (T2 < Tfar)
+		Tfar = T2;
+	if (Tnear > Tfar)
+		return true;
+	if (Tfar < 0)
+		return true;
+	return false;
 }
