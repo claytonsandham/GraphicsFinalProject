@@ -1,4 +1,0 @@
-Clayton Sandham
-COMP 361 Homework 4
-
-I chose to make faces handle themselves and be queryable for buffer data. This simplifies a lot of math. all that needs to be done is add points in the right winding order and the face will handle the rest.
