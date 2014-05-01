@@ -112,7 +112,7 @@ void RunRaySphereTests() {
 	RunTest(
 		"Looking back",
 		Test_RaySphereIntersect(ZNEGTEN_VECTOR, POSZ_VECTOR, BACK5_MATRIX),
-		TEN_KAZILLION); // TODO change this to the right number
+		4.0);
 
 	RunTest(
 		"West pole",
@@ -192,6 +192,9 @@ void RunRayCubeTests() {
 void RunYourTests() {
 	// It can be very useful to put tests of your own here. The unit tests above do NOT test everything!
 	RunTest("Custom tri 1", Test_RayPolyIntersect(vec3(0,0,0),vec3(0,0,1),vec3(0,0,0),vec3(0.5,10,0),vec3(0,10,0.5),mat4(1.0f)),-1.0); //ray origin is on the polygon (tests epsilon value)
+
+	RunTest("Inside out", Test_RaySphereIntersect(ZERO_VECTOR, POSZ_VECTOR, IDENTITY_MATRIX), 1.0); // Shoot a ray from the center of the sphere
+	RunTest("Top down", Test_RaySphereIntersect(vec3(0, 5, 0), vec3(0, -1, 0), IDENTITY_MATRIX), 4.0); // Shoot a ray from above the sphere, on the Y-axis
 }
 
 void RunGradingTests() {

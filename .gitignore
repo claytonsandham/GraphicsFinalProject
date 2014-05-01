@@ -2,3 +2,5 @@ Debug
 x64
 *.sdf
 /CRS Program 4/*.opensdf
+*.suo
+/Ray Generation Kit/Ray Generation/Debug

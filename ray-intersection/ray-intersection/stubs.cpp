@@ -11,8 +11,8 @@ double Test_RaySphereIntersect(const vec3& P0, const vec3& V0, const mat4& T) {
 	VTrans[2].w = 0;
 	VTrans = inverse(VTrans);
 
-	vec4 P1 = vec4(P0, 0) * PTrans;
-	vec4 V1 = vec4(V0, 0) * VTrans;
+	vec4 P1 = PTrans * vec4(P0, 1.0);
+	vec4 V1 = VTrans * vec4(V0, 0.0);
 	vec3 P = vec3(P1);
 	vec3 V = vec3(V1);
 
@@ -23,8 +23,8 @@ double Test_RaySphereIntersect(const vec3& P0, const vec3& V0, const mat4& T) {
 
 //Find out the T value
 	int a = 1;
-	float b = dot(TwoV, P - translate);
-	float c = pow(length(P - translate), 2) - pow(radius, 2);
+	float b = dot(TwoV, P);
+	float c = pow(length(P), 2) - pow(radius, 2);
 
 	float t1 = (-b + sqrt(pow(b, 2) - 4 * a * c)) / (2 * a);
 	float t2 = (-b - sqrt(pow(b, 2) - 4 * a * c)) / (2 * a);
@@ -64,7 +64,7 @@ double Test_RayPolyIntersect(const vec3& P0, const vec3& V0, const vec3& p1, con
 	mat3 S01 = mat3(p1.y, p1.z, 1, p2.y, p2.z, 1, p3.y, p3.z, 1);
 	mat3 S02 = mat3(p1.z, p1.x, 1, p2.z, p2.x, 1, p3.z, p3.x, 1);
 	mat3 S03 = mat3(p1.x, p1.y, 1, p2.x, p2.y, 1, p3.x, p3.y, 1);
-	
+
 	mat3 S11 = mat3(R.y, R.z, 1, p2.y, p2.z, 1, p3.y, p3.z, 1);
 	mat3 S12 = mat3(R.z, R.x, 1, p2.z, p2.x, 1, p3.z, p3.x, 1);
 	mat3 S13 = mat3(R.x, R.y, 1, p2.x, p2.y, 1, p3.x, p3.y, 1);
@@ -84,7 +84,7 @@ double Test_RayPolyIntersect(const vec3& P0, const vec3& V0, const vec3& p1, con
 	float S2 = sqrt(determinant(S21)*determinant(S21) + determinant(S22)*determinant(S22) + determinant(S23)*determinant(S23))/S0;
 	float S3 = sqrt(determinant(S31)*determinant(S31) + determinant(S32)*determinant(S32) + determinant(S33)*determinant(S33))/S0;
 	float testS = S1+S2+S3;
-	
+
 	if (testS <= 1 + epsilon && testS >= 1 - epsilon) //Include epsilon value since floating point numbers are not 100% accurate
 		return t;
 	else
