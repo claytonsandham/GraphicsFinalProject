@@ -10,7 +10,7 @@
 #define BUFFER_OFFSET(bytes) ((GLvoid*) (bytes))
 
 
-MyGLWidget::MyGLWidget(QWidget* parent) : QGLWidget(parent) {
+MyGLWidget::MyGLWidget(QWidget* parent) : QGLWidget(parent), cube() {
 
 	
 }

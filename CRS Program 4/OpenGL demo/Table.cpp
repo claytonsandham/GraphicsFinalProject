@@ -73,7 +73,7 @@ void Table::draw(glm::mat4 Matrix, glm::vec3 color)
 	setColor(color);
 	for(int i=0; i<subGeometry->children.size(); ++i)
 	{
-		subGeometry->children.at(i)->visitChildren(Matrix);
+		subGeometry->children.at(i)->visitChildren(Matrix * localMatrix);
 	}
 }
 
