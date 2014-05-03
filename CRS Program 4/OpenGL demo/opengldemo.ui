@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>688</width>
+    <width>765</width>
     <height>621</height>
    </rect>
   </property>
@@ -219,13 +219,221 @@
      <string>-y</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_14">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>300</y>
+      <width>81</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string> Next Object</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>20</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Object Movement</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_16">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>57</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-x</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_17">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>57</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>+x</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_18">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>75</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-z</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_20">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>40</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>+z</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>110</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Object Scale</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_19">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>140</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>+x</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_21">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>170</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-x</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_22">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>140</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>+y</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_23">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>140</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>+z</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_24">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>170</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-y</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_25">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>170</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-z</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>200</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Object Rotation</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_15">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>220</y>
+      <width>25</width>
+      <height>75</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;-</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_26">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>220</y>
+      <width>25</width>
+      <height>75</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-&gt;</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>688</width>
+     <width>765</width>
      <height>21</height>
     </rect>
    </property>
@@ -261,6 +469,19 @@
     <slot>lightZMinus()</slot>
     <slot>lightXPlus()</slot>
     <slot>lightXMinus()</slot>
+    <slot>cycleObjects()</slot>
+    <slot>moveXPlus()</slot>
+    <slot>moveXMinus()</slot>
+    <slot>moveZPlus()</slot>
+    <slot>moveZMinus()</slot>
+    <slot>rotatePlus()</slot>
+    <slot>rotateMinus()</slot>
+    <slot>scaleXPlus()</slot>
+    <slot>scaleXMinus()</slot>
+    <slot>scaleZPlus()</slot>
+    <slot>scaleZMinus()</slot>
+    <slot>scaleYPlus()</slot>
+    <slot>scaleYMinus()</slot>
    </slots>
   </customwidget>
   <customwidget>
@@ -494,6 +715,214 @@
     <hint type="destinationlabel">
      <x>129</x>
      <y>458</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_14</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>cycleObjects()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>228</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>140</x>
+     <y>235</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_20</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>moveZPlus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>713</x>
+     <y>85</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>650</x>
+     <y>67</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_18</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>moveZMinus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>710</x>
+     <y>132</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>650</x>
+     <y>129</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_16</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>moveXMinus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>675</x>
+     <y>97</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>650</x>
+     <y>97</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_17</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>moveXPlus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>744</x>
+     <y>104</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>647</x>
+     <y>146</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_19</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>scaleXPlus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>678</x>
+     <y>174</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>650</x>
+     <y>177</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_21</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>scaleXMinus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>675</x>
+     <y>216</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>650</x>
+     <y>219</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_22</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>scaleYPlus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>713</x>
+     <y>181</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>615</x>
+     <y>191</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_24</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>scaleYMinus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>713</x>
+     <y>223</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>639</x>
+     <y>230</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_23</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>scaleZPlus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>745</x>
+     <y>185</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>650</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_25</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>scaleZMinus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>741</x>
+     <y>223</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>654</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_15</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>rotateMinus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>686</x>
+     <y>265</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>651</x>
+     <y>265</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_26</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>rotatePlus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>728</x>
+     <y>311</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>651</x>
+     <y>304</y>
     </hint>
    </hints>
   </connection>

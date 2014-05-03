@@ -63,6 +63,8 @@ private:
 	Camera camera;
 	Light light;
 	Node*** grid;
+	Node* currentObject;
+	int currentLocation;
 
 public slots:
 	void up(void);
@@ -79,5 +81,19 @@ public slots:
 	void lightXMinus();
 	void lightZPlus();
 	void lightZMinus();
+	void cycleObjects();
+
+	void moveXPlus();
+	void moveXMinus();
+	void moveZPlus();
+	void moveZMinus();
+	void rotatePlus();
+	void rotateMinus();
+	void scaleXPlus();
+	void scaleXMinus();
+	void scaleZPlus();
+	void scaleZMinus();
+	void scaleYPlus();
+	void scaleYMinus();
 
 };
