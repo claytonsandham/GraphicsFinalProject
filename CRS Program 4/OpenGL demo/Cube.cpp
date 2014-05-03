@@ -11,7 +11,8 @@ Cube::Cube(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Translat
 {
     //Start with identity matrix
 	modelMatrix = glm::mat4(1.0f);
-	
+
+	localMatrix = glm::mat4(1.0f);
 	localMatrix = glm::scale(localMatrix, Scale);
 	localMatrix = glm::rotate(localMatrix, RotAngle, Rotate);
 	localMatrix = glm::translate(localMatrix, Translate);

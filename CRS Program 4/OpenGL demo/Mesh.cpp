@@ -6,6 +6,7 @@ Mesh::Mesh(vec3 Scale, vec3 Rotate, float RotAngle, vec3 Translate)
 	 //Start with identity matrix
 	modelMatrix = glm::mat4(1.0f);
 	
+	localMatrix = glm::mat4(1.0f);
 	localMatrix = glm::scale(localMatrix, Scale);
 	localMatrix = glm::rotate(localMatrix, RotAngle, Rotate);
 	localMatrix = glm::translate(localMatrix, Translate);

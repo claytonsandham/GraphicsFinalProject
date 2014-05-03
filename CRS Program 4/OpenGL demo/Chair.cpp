@@ -10,6 +10,11 @@ Geometry* Chair::cube;
 
 Chair::Chair(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Translate)
 {
+	localMatrix = glm::mat4(1.0f);
+	localMatrix = glm::scale(localMatrix, Scale);
+	localMatrix = glm::rotate(localMatrix, RotAngle, Rotate);
+	localMatrix = glm::translate(localMatrix, Translate);
+
 	glm::mat4 xform;
 	xform = toMat(Scale, glm::vec3(0,1,0), RotAngle, Translate);
 	Node* chair = new Node(xform, NULL);
