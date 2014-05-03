@@ -42,6 +42,7 @@ void MyGLWidget::initializeGL() {
 	//lambert
 	const char* vertexSource = textFileRead("lambert.vert");
 	const char* fragmentSource = textFileRead("lambert.frag");
+
 	glShaderSource(vertexShader, 1, &vertexSource, 0);
 	glShaderSource(fragmentShader, 1, &fragmentSource, 0);
 	glCompileShader(vertexShader);
@@ -81,9 +82,98 @@ void MyGLWidget::initializeGL() {
 
 void MyGLWidget::importFile(string fileName)
 {
+	sceneGraph.clear();
 	ifstream reader(fileName);
 	string type;
-	reader >> type;
+	float xDim, zDim, xLoc, zLoc, rot, xScale, yScale, zScale;
+	int numObjects;
+	reader >> xDim;
+	reader >> zDim;
+	for (int i = 0; i < (xDim + 1) * (zDim + 1); i++)
+	{
+		sceneGraph.push_back(new Node());
+	}
+	reader >> numObjects;
+	for(int i = 0; i < numObjects; i++) 
+	{
+		reader >> type;
+		string meshName;
+		int numSubdiv;
+		if (type == "mesh") 
+		{			
+			reader >> meshName;
+			reader >> numSubdiv;
+			reader >> xLoc;
+			reader >> zLoc;
+			reader >> rot;
+			reader >> xScale;
+			reader >> yScale;
+			reader >> zScale;
+			string meshType;
+			ifstream meshRead(meshName);
+			Mesh* importedMesh;
+			meshRead >> meshType;
+			if (meshType == "extrusion")
+			{
+				Extrusion* extrusion = new Extrusion(glm::vec3(xScale, yScale, zScale), glm::vec3(0, 1, 0), rot, glm::vec3(xLoc, 0, zLoc));
+				extrusion->import(meshRead);
+				extrusion ->initialize(shaderProgram, u_modelMatrix);
+				importedMesh = extrusion;
+			}
+			if (meshType == "surfrev")
+			{
+				SurfRev* surfRev = new SurfRev(glm::vec3(xScale, yScale, zScale), glm::vec3(0, 1, 0), rot, glm::vec3(xLoc, 0, zLoc));
+				surfRev->import(meshRead);
+				surfRev ->initialize(shaderProgram, u_modelMatrix);
+				importedMesh = surfRev;
+			}
+			Node* newMesh = new Node(glm::mat4(1.0f), importedMesh);
+			sceneGraph[zLoc * xDim + xLoc]->addObject(newMesh);
+			meshRead.close();
+		}
+		else
+		{
+			reader >> xLoc;
+			reader >> zLoc;
+			reader >> rot;
+			reader >> xScale;
+			reader >> yScale;
+			reader >> zScale;
+			if (type == "box")
+			{
+				Cube* newCube;
+				newCube = new Cube(glm::vec3(xScale, yScale, zScale), glm::vec3(0, 1, 0), rot, glm::vec3(xLoc, 0, zLoc));
+				newCube->initialize(shaderProgram, u_modelMatrix);
+				Node* newObject = new Node(glm::mat4(1.0f), newCube);
+				sceneGraph[zLoc * xDim + xLoc]->addObject(newObject);
+
+			}
+			if (type == "sphere")
+			{
+				Cube* newSphere; //change to sphere once implemented (also below)
+				newSphere = new Cube(glm::vec3(xScale, yScale, zScale), glm::vec3(0, 1, 0), rot, glm::vec3(xLoc, 0, zLoc));
+				Node* newObject = new Node(glm::mat4(1.0f), newSphere);
+				sceneGraph[zLoc * xDim + xLoc]->addObject(newObject);
+			}
+			if (type == "chair")
+			{
+				Chair* newChair;
+				newChair = new Chair(glm::vec3(xScale, yScale, zScale), glm::vec3(0, 1, 0), rot, glm::vec3(xLoc, 0, zLoc));
+				newChair->initialize(shaderProgram, u_modelMatrix);
+				Node* newObject = new Node(glm::mat4(1.0f), newChair);
+				sceneGraph[zLoc * xDim + xLoc]->addObject(newObject);
+			}
+			if (type == "table")
+			{
+				Table* newTable;
+				newTable = new Table(glm::vec3(xScale, yScale, zScale), glm::vec3(0, 1, 0), rot, glm::vec3(xLoc, 0, zLoc));
+				newTable->initialize(shaderProgram, u_modelMatrix);
+				Node* newObject = new Node(glm::mat4(1.0f), newTable);
+				sceneGraph[zLoc * xDim + xLoc]->addObject(newObject);
+			}
+		}
+	}	
+	/*reader >> type;
 	Mesh* importedMesh;
 	if (type == "extrusion")
 	{
@@ -99,7 +189,7 @@ void MyGLWidget::importFile(string fileName)
 		surfRev ->initialize(shaderProgram, u_modelMatrix);
 		importedMesh = surfRev;
 	}
-	sceneGraph.push_back(new Node(glm::mat4(1.0f), importedMesh));
+	sceneGraph.push_back(new Node(glm::mat4(1.0f), importedMesh));*/
 	reader.close();
 }
 
