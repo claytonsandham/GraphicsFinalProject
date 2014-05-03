@@ -172,35 +172,35 @@ void Cube::initialize(unsigned int shaderProgram, unsigned int modelMatrix)
     u_modelMatrix = modelMatrix;
 	this->shaderProgram = shaderProgram;
 
-	GLuint vertexBuffer;
+	glGenBuffers(1, &vertexBuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
 	glBufferData(GL_ARRAY_BUFFER, 24*sizeof(point4), points, GL_STATIC_DRAW);
 	this->vertexBuffer = vertexBuffer;
 
-	GLuint vLocation = glGetAttribLocation(shaderProgram, "vs_position");
+	vLocation = glGetAttribLocation(shaderProgram, "vs_position");
 	glEnableVertexAttribArray(vLocation);
 	glVertexAttribPointer(vLocation, 4, GL_FLOAT, GL_FALSE, 0, 0);
 
-	GLuint colorBuffer;
+	glGenBuffers(1, &colorBuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, colorBuffer);
 	glBufferData(GL_ARRAY_BUFFER, 24*sizeof(color3), colors, GL_STATIC_DRAW);
 	this->colorBuffer = colorBuffer;
 
-	GLuint vColor = glGetAttribLocation(shaderProgram, "vs_color");
+	vColor = glGetAttribLocation(shaderProgram, "vs_color");
 	glEnableVertexAttribArray(vColor);
 	glVertexAttribPointer(vColor, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	this->vColor = vColor;
 
-	GLuint normalBuffer;
+	glGenBuffers(1, &normalBuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, normalBuffer);
 	glBufferData(GL_ARRAY_BUFFER, 24*sizeof(normal4), normals, GL_STATIC_DRAW);
 	this->normalBuffer = normalBuffer;
 
-	GLuint vNormal = glGetAttribLocation(shaderProgram, "vs_normal");
+	vNormal = glGetAttribLocation(shaderProgram, "vs_normal");
 	glEnableVertexAttribArray(vNormal);
 	glVertexAttribPointer(vNormal, 4, GL_FLOAT, GL_FALSE, 0, 0);
 	
-	GLuint indexBuffer;
+	glGenBuffers(1, &indexBuffer);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 36*sizeof(GLuint), indices, GL_STATIC_DRAW);
 	this->indexBuffer = indexBuffer;
@@ -216,23 +216,8 @@ void Cube::draw(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Tra
 	modelMatrix = glm::rotate(modelMatrix, RotAngle, Rotate);
 	modelMatrix = glm::translate(modelMatrix, Translate);
 
-	modelMatrix =  localMatrix * modelMatrix;
+	draw(modelMatrix, color3(1.0f, 0, 0));
 
-
-	//glBindBuffer(GL_ARRAY_BUFFER, colorBuffer);
-	//glBufferData(GL_ARRAY_BUFFER, 24*sizeof(color3), colors, GL_STATIC_DRAW);
-
-	//GLuint vColor = glGetAttribLocation(shaderProgram, "vs_color");
-	//glEnableVertexAttribArray(vColor);
-	//glVertexAttribPointer(vColor, 3, GL_FLOAT, GL_FALSE, 0, 0);
-
-
-	//glUniformMatrix4fv(u_modelMatrix, 1, GL_FALSE, &modelMatrix[0][0]);
-
-	//Traverse your scene graph, remember the function to actually render something is as follows:
-	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
-	//but you'll want to draw GL_QUADS for now
-	glFlush();
 }
 void Cube::draw(glm::mat4 Matrix, glm::vec3 color)
 {
