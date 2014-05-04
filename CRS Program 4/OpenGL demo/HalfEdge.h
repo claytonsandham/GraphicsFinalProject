@@ -6,22 +6,23 @@
 #include <exception>
 
 #include "HalfEdgeDS.h"
-#include "Geometry.h"
+#include "Mesh.h"
 
+using glm::mat4;
+using glm::rotate;
+using glm::vec3;
 using std::exception;
 using std::ifstream;
 
-class HalfEdge : Geometry {
+class HalfEdge : Mesh {
 // Constructors and destructor
 public : 
-	HalfEdge(int xIndex, int zIndex, float rotation, float xScale, float yScale, float zScale);
-	HalfEdge(char *inputFile, int thing, int xIndex, int zIndex, float rotation, float xScale, float yScale, float zScale);
+	HalfEdge(vec3 scale, vec3 rotate, float rotAngle, vec3 translate);
 	~HalfEdge();
 
 // Public function interface
 public : 
-	void load();
-	void load(char *inputFile);
+	void import(ifstream& reader);
 	void subDivide(int iterations = 1);
 
 //Give public access to the data
@@ -29,8 +30,9 @@ public :
 	HE *start;
 
 // Internal "interface" for building the object
+private : 
 	void bufferStuffer();
-	void build();
+	void revolve();
 
 // Physical attributes of object
 private : 
@@ -39,8 +41,14 @@ private :
 	Scale scale;
 	int slices;
 
+// Edges and vertices
+private : 
+	vector<HEEdge> edges;
+	vector<HEFace> faces;
+	vector<HEVertex> verts;
+
 // Polyline information
 private : 
-	vector<Vertex> polyline;
+	vector<vec4> polyline;
 	int polylineTotal;
 };
