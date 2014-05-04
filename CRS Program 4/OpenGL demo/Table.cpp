@@ -5,11 +5,12 @@
 	Description: This file contains the function definitions for the Table class.
 */
 #include "Table.h"
-Geometry* Table::cube;
+#include "Cube.h"
 
 
 Table::Table(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Translate)
 {
+	setCube(new Cube(vec3(1, 1, 1), vec3(0, 1, 0), 0.0f, vec3(0, 0, 0)));
 	localMatrix = glm::mat4(1.0f);
 	localMatrix = glm::scale(localMatrix, Scale);
 	localMatrix = glm::rotate(localMatrix, RotAngle, Rotate);
@@ -19,7 +20,7 @@ Table::Table(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Transl
 	xform = toMat(Scale, glm::vec3(0,1,0), RotAngle, Translate);
 	Node* table = new Node(xform, NULL);
 
-	xform = toMat(glm::vec3(1, -0.1, 1), glm::vec3(0,1,0), 0.0f, glm::vec3(0, 1, 0));//Top
+	xform = toMat(glm::vec3(1, 0.1, 1), glm::vec3(0,1,0), 0.0f, glm::vec3(0, 1, 0));//Top
 	table->children.push_back(new Node(xform, cube));
 
 	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(0.45, 0.5, 0.45));//Legs
@@ -48,6 +49,7 @@ Table::~Table(void)
 
 void Table::initialize(unsigned int shaderProgram, unsigned int modelMatrix)
 {
+	cube->initialize(shaderProgram, modelMatrix);
 }
 
 void Table::draw(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Translate)

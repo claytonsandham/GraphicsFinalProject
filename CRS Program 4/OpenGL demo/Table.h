@@ -13,8 +13,8 @@ public:
     void draw(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Translate);
     void draw(glm::mat4 Matrix, glm::vec3 color);
 	void setColor(glm::vec3 color);
-	static Geometry* cube;
-	static void setCube(Geometry* _cube);
+	Geometry* cube;
+	void setCube(Geometry* _cube);
 private:
 	Node* subGeometry;
 };

@@ -64,11 +64,6 @@ void MyGLWidget::initializeGL() {
 	
 	cube = Cube(glm::vec3(1, 1, 1), glm::vec3(0, 1, 0), 0, glm::vec3(0, 0, 0));
 	cube.initialize(shaderProgram, u_modelMatrix);
-	Table::setCube(&cube);
-	Chair::setCube(&cube);
-
-	
-
 
 	camera.initialize(u_projLocation, u_camMatrix, glm::vec3(0.0, 0.0, 0.0), 5);
 

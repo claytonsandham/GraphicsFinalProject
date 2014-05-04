@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MyGLWidget.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,15 +12,15 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'MyGLWidget.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.2.1. It"
+#error "This file was generated using the moc from 5.2.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MyGLWidget_t {
-    QByteArrayData data[16];
-    char stringdata[123];
+    QByteArrayData data[29];
+    char stringdata[270];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -44,12 +44,29 @@ QT_MOC_LITERAL(11, 66, 9),
 QT_MOC_LITERAL(12, 76, 10),
 QT_MOC_LITERAL(13, 87, 11),
 QT_MOC_LITERAL(14, 99, 10),
-QT_MOC_LITERAL(15, 110, 11)
+QT_MOC_LITERAL(15, 110, 11),
+QT_MOC_LITERAL(16, 122, 12),
+QT_MOC_LITERAL(17, 135, 9),
+QT_MOC_LITERAL(18, 145, 10),
+QT_MOC_LITERAL(19, 156, 9),
+QT_MOC_LITERAL(20, 166, 10),
+QT_MOC_LITERAL(21, 177, 10),
+QT_MOC_LITERAL(22, 188, 11),
+QT_MOC_LITERAL(23, 200, 10),
+QT_MOC_LITERAL(24, 211, 11),
+QT_MOC_LITERAL(25, 223, 10),
+QT_MOC_LITERAL(26, 234, 11),
+QT_MOC_LITERAL(27, 246, 10),
+QT_MOC_LITERAL(28, 257, 11)
     },
     "MyGLWidget\0up\0\0down\0left\0right\0zoomIn\0"
     "zoomOut\0load\0string\0lightUp\0lightDown\0"
     "lightXPlus\0lightXMinus\0lightZPlus\0"
-    "lightZMinus\0"
+    "lightZMinus\0cycleObjects\0moveXPlus\0"
+    "moveXMinus\0moveZPlus\0moveZMinus\0"
+    "rotatePlus\0rotateMinus\0scaleXPlus\0"
+    "scaleXMinus\0scaleZPlus\0scaleZMinus\0"
+    "scaleYPlus\0scaleYMinus\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -59,7 +76,7 @@ static const uint qt_meta_data_MyGLWidget[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
+      26,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -67,19 +84,32 @@ static const uint qt_meta_data_MyGLWidget[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   79,    2, 0x0a,
-       3,    0,   80,    2, 0x0a,
-       4,    0,   81,    2, 0x0a,
-       5,    0,   82,    2, 0x0a,
-       6,    0,   83,    2, 0x0a,
-       7,    0,   84,    2, 0x0a,
-       8,    1,   85,    2, 0x0a,
-      10,    0,   88,    2, 0x0a,
-      11,    0,   89,    2, 0x0a,
-      12,    0,   90,    2, 0x0a,
-      13,    0,   91,    2, 0x0a,
-      14,    0,   92,    2, 0x0a,
-      15,    0,   93,    2, 0x0a,
+       1,    0,  144,    2, 0x0a,
+       3,    0,  145,    2, 0x0a,
+       4,    0,  146,    2, 0x0a,
+       5,    0,  147,    2, 0x0a,
+       6,    0,  148,    2, 0x0a,
+       7,    0,  149,    2, 0x0a,
+       8,    1,  150,    2, 0x0a,
+      10,    0,  153,    2, 0x0a,
+      11,    0,  154,    2, 0x0a,
+      12,    0,  155,    2, 0x0a,
+      13,    0,  156,    2, 0x0a,
+      14,    0,  157,    2, 0x0a,
+      15,    0,  158,    2, 0x0a,
+      16,    0,  159,    2, 0x0a,
+      17,    0,  160,    2, 0x0a,
+      18,    0,  161,    2, 0x0a,
+      19,    0,  162,    2, 0x0a,
+      20,    0,  163,    2, 0x0a,
+      21,    0,  164,    2, 0x0a,
+      22,    0,  165,    2, 0x0a,
+      23,    0,  166,    2, 0x0a,
+      24,    0,  167,    2, 0x0a,
+      25,    0,  168,    2, 0x0a,
+      26,    0,  169,    2, 0x0a,
+      27,    0,  170,    2, 0x0a,
+      28,    0,  171,    2, 0x0a,
 
  // slots: parameters
     QMetaType::Void,
@@ -89,6 +119,19 @@ static const uint qt_meta_data_MyGLWidget[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 9,    2,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -117,6 +160,19 @@ void MyGLWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 10: _t->lightXMinus(); break;
         case 11: _t->lightZPlus(); break;
         case 12: _t->lightZMinus(); break;
+        case 13: _t->cycleObjects(); break;
+        case 14: _t->moveXPlus(); break;
+        case 15: _t->moveXMinus(); break;
+        case 16: _t->moveZPlus(); break;
+        case 17: _t->moveZMinus(); break;
+        case 18: _t->rotatePlus(); break;
+        case 19: _t->rotateMinus(); break;
+        case 20: _t->scaleXPlus(); break;
+        case 21: _t->scaleXMinus(); break;
+        case 22: _t->scaleZPlus(); break;
+        case 23: _t->scaleZMinus(); break;
+        case 24: _t->scaleYPlus(); break;
+        case 25: _t->scaleYMinus(); break;
         default: ;
         }
     }
@@ -147,13 +203,13 @@ int MyGLWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 13)
+        if (_id < 26)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 26;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 13)
+        if (_id < 26)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 13;
+        _id -= 26;
     }
     return _id;
 }

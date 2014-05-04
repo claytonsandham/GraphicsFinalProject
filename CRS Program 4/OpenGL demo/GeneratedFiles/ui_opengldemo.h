@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'opengldemo.ui'
 **
-** Created by: Qt User Interface Compiler version 5.2.1
+** Created by: Qt User Interface Compiler version 5.2.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -46,6 +46,22 @@ public:
     QPushButton *pushButton_11;
     QPushButton *pushButton_12;
     QPushButton *pushButton_13;
+    QPushButton *pushButton_14;
+    QLabel *label_2;
+    QPushButton *pushButton_16;
+    QPushButton *pushButton_17;
+    QPushButton *pushButton_18;
+    QPushButton *pushButton_20;
+    QLabel *label_3;
+    QPushButton *pushButton_19;
+    QPushButton *pushButton_21;
+    QPushButton *pushButton_22;
+    QPushButton *pushButton_23;
+    QPushButton *pushButton_24;
+    QPushButton *pushButton_25;
+    QLabel *label_4;
+    QPushButton *pushButton_15;
+    QPushButton *pushButton_26;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -54,7 +70,7 @@ public:
     {
         if (OpenGLdemoClass->objectName().isEmpty())
             OpenGLdemoClass->setObjectName(QStringLiteral("OpenGLdemoClass"));
-        OpenGLdemoClass->resize(688, 621);
+        OpenGLdemoClass->resize(765, 621);
         centralWidget = new QWidget(OpenGLdemoClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         widget = new MyGLWidget(centralWidget);
@@ -105,10 +121,58 @@ public:
         pushButton_13 = new QPushButton(centralWidget);
         pushButton_13->setObjectName(QStringLiteral("pushButton_13"));
         pushButton_13->setGeometry(QRect(40, 380, 21, 23));
+        pushButton_14 = new QPushButton(centralWidget);
+        pushButton_14->setObjectName(QStringLiteral("pushButton_14"));
+        pushButton_14->setGeometry(QRect(670, 300, 81, 81));
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(670, 20, 91, 16));
+        pushButton_16 = new QPushButton(centralWidget);
+        pushButton_16->setObjectName(QStringLiteral("pushButton_16"));
+        pushButton_16->setGeometry(QRect(670, 57, 25, 25));
+        pushButton_17 = new QPushButton(centralWidget);
+        pushButton_17->setObjectName(QStringLiteral("pushButton_17"));
+        pushButton_17->setGeometry(QRect(730, 57, 25, 25));
+        pushButton_18 = new QPushButton(centralWidget);
+        pushButton_18->setObjectName(QStringLiteral("pushButton_18"));
+        pushButton_18->setGeometry(QRect(700, 75, 25, 25));
+        pushButton_20 = new QPushButton(centralWidget);
+        pushButton_20->setObjectName(QStringLiteral("pushButton_20"));
+        pushButton_20->setGeometry(QRect(700, 40, 25, 25));
+        label_3 = new QLabel(centralWidget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(680, 110, 91, 16));
+        pushButton_19 = new QPushButton(centralWidget);
+        pushButton_19->setObjectName(QStringLiteral("pushButton_19"));
+        pushButton_19->setGeometry(QRect(670, 140, 25, 25));
+        pushButton_21 = new QPushButton(centralWidget);
+        pushButton_21->setObjectName(QStringLiteral("pushButton_21"));
+        pushButton_21->setGeometry(QRect(670, 170, 25, 25));
+        pushButton_22 = new QPushButton(centralWidget);
+        pushButton_22->setObjectName(QStringLiteral("pushButton_22"));
+        pushButton_22->setGeometry(QRect(700, 140, 25, 25));
+        pushButton_23 = new QPushButton(centralWidget);
+        pushButton_23->setObjectName(QStringLiteral("pushButton_23"));
+        pushButton_23->setGeometry(QRect(730, 140, 25, 25));
+        pushButton_24 = new QPushButton(centralWidget);
+        pushButton_24->setObjectName(QStringLiteral("pushButton_24"));
+        pushButton_24->setGeometry(QRect(700, 170, 25, 25));
+        pushButton_25 = new QPushButton(centralWidget);
+        pushButton_25->setObjectName(QStringLiteral("pushButton_25"));
+        pushButton_25->setGeometry(QRect(730, 170, 25, 25));
+        label_4 = new QLabel(centralWidget);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(680, 200, 91, 16));
+        pushButton_15 = new QPushButton(centralWidget);
+        pushButton_15->setObjectName(QStringLiteral("pushButton_15"));
+        pushButton_15->setGeometry(QRect(680, 220, 25, 75));
+        pushButton_26 = new QPushButton(centralWidget);
+        pushButton_26->setObjectName(QStringLiteral("pushButton_26"));
+        pushButton_26->setGeometry(QRect(720, 220, 25, 75));
         OpenGLdemoClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(OpenGLdemoClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 688, 21));
+        menuBar->setGeometry(QRect(0, 0, 765, 21));
         OpenGLdemoClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(OpenGLdemoClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -132,6 +196,19 @@ public:
         QObject::connect(pushButton_12, SIGNAL(clicked()), widget, SLOT(lightUp()));
         QObject::connect(pushButton_13, SIGNAL(clicked()), widget, SLOT(lightDown()));
         QObject::connect(pushButton_9, SIGNAL(clicked()), widget, SLOT(lightZPlus()));
+        QObject::connect(pushButton_14, SIGNAL(clicked()), widget, SLOT(cycleObjects()));
+        QObject::connect(pushButton_20, SIGNAL(clicked()), widget, SLOT(moveZPlus()));
+        QObject::connect(pushButton_18, SIGNAL(clicked()), widget, SLOT(moveZMinus()));
+        QObject::connect(pushButton_16, SIGNAL(clicked()), widget, SLOT(moveXMinus()));
+        QObject::connect(pushButton_17, SIGNAL(clicked()), widget, SLOT(moveXPlus()));
+        QObject::connect(pushButton_19, SIGNAL(clicked()), widget, SLOT(scaleXPlus()));
+        QObject::connect(pushButton_21, SIGNAL(clicked()), widget, SLOT(scaleXMinus()));
+        QObject::connect(pushButton_22, SIGNAL(clicked()), widget, SLOT(scaleYPlus()));
+        QObject::connect(pushButton_24, SIGNAL(clicked()), widget, SLOT(scaleYMinus()));
+        QObject::connect(pushButton_23, SIGNAL(clicked()), widget, SLOT(scaleZPlus()));
+        QObject::connect(pushButton_25, SIGNAL(clicked()), widget, SLOT(scaleZMinus()));
+        QObject::connect(pushButton_15, SIGNAL(clicked()), widget, SLOT(rotateMinus()));
+        QObject::connect(pushButton_26, SIGNAL(clicked()), widget, SLOT(rotatePlus()));
 
         QMetaObject::connectSlotsByName(OpenGLdemoClass);
     } // setupUi
@@ -143,7 +220,7 @@ public:
         pushButton_2->setText(QApplication::translate("OpenGLdemoClass", "<-", 0));
         pushButton_3->setText(QApplication::translate("OpenGLdemoClass", "Up", 0));
         pushButton_4->setText(QApplication::translate("OpenGLdemoClass", "Down", 0));
-        lineEdit->setText(QApplication::translate("OpenGLdemoClass", "Extrusion1.dat", 0));
+        lineEdit->setText(QApplication::translate("OpenGLdemoClass", "scene2.txt", 0));
         pushButton_5->setText(QApplication::translate("OpenGLdemoClass", "Load Config", 0));
         pushButton_7->setText(QApplication::translate("OpenGLdemoClass", "-", 0));
         pushButton_8->setText(QApplication::translate("OpenGLdemoClass", "+", 0));
@@ -154,6 +231,22 @@ public:
         pushButton_11->setText(QApplication::translate("OpenGLdemoClass", "+x", 0));
         pushButton_12->setText(QApplication::translate("OpenGLdemoClass", "+y", 0));
         pushButton_13->setText(QApplication::translate("OpenGLdemoClass", "-y", 0));
+        pushButton_14->setText(QApplication::translate("OpenGLdemoClass", " Next Object", 0));
+        label_2->setText(QApplication::translate("OpenGLdemoClass", "Object Movement", 0));
+        pushButton_16->setText(QApplication::translate("OpenGLdemoClass", "-x", 0));
+        pushButton_17->setText(QApplication::translate("OpenGLdemoClass", "+x", 0));
+        pushButton_18->setText(QApplication::translate("OpenGLdemoClass", "-z", 0));
+        pushButton_20->setText(QApplication::translate("OpenGLdemoClass", "+z", 0));
+        label_3->setText(QApplication::translate("OpenGLdemoClass", "Object Scale", 0));
+        pushButton_19->setText(QApplication::translate("OpenGLdemoClass", "+x", 0));
+        pushButton_21->setText(QApplication::translate("OpenGLdemoClass", "-x", 0));
+        pushButton_22->setText(QApplication::translate("OpenGLdemoClass", "+y", 0));
+        pushButton_23->setText(QApplication::translate("OpenGLdemoClass", "+z", 0));
+        pushButton_24->setText(QApplication::translate("OpenGLdemoClass", "-y", 0));
+        pushButton_25->setText(QApplication::translate("OpenGLdemoClass", "-z", 0));
+        label_4->setText(QApplication::translate("OpenGLdemoClass", "Object Rotation", 0));
+        pushButton_15->setText(QApplication::translate("OpenGLdemoClass", "<-", 0));
+        pushButton_26->setText(QApplication::translate("OpenGLdemoClass", "->", 0));
     } // retranslateUi
 
 };
