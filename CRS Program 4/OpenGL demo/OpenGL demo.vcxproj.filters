@@ -104,6 +104,9 @@
     <ClCompile Include="SurfRev.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HalfEdge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="opengldemo.h">
@@ -160,6 +163,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SurfRev.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfEdge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfEdgeDS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

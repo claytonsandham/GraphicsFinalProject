@@ -120,3 +120,12 @@ vector<Face> Face::triangulate()
 	}
 	return faces;
 }
+
+// <oliver description="function to compute the winding order">
+void Face::wind() {
+//Already wound
+	if (points.size() <= 1) return;
+
+	vector<vec4> 
+}
+// </oliver>
