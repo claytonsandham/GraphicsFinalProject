@@ -18,15 +18,25 @@ using std::vector;
 class Node
 {
 public:
+	Node();
 	Node(glm::mat4 matrix, Geometry* model);
 	~Node(void);
 public:
     glm::mat4 transform;
+	glm::mat4 liveTransform;
     Geometry* geometry;
     vector<Node*> children;
+	Node* nextObject;
     void visitChildren(glm::mat4 xform);
-	float x, y;
+	float x, y, z;
+	float height;
+	float sX, sZ, sY, reRot;
+	int mX, mZ; 
 	glm::vec3 color;
 	void setColor(glm::vec3 color);
+	void addObject(Node* newModel);
+	void setY(float yVal);
+	void updateTransform();
+	float getY();
 };
 

@@ -10,6 +10,8 @@ Geometry* Chair::cube;
 
 Chair::Chair(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Translate)
 {
+	localMatrix = toMat(Scale, Rotate, RotAngle, Translate);
+
 	glm::mat4 xform;
 	xform = toMat(Scale, glm::vec3(0,1,0), RotAngle, Translate);
 	Node* chair = new Node(xform, NULL);
@@ -51,11 +53,7 @@ void Chair::initialize(unsigned int shaderProgram, unsigned int modelMatrix)
 void Chair::draw(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Translate)
 {
 	//Start with identity matrix
-	modelMatrix = glm::mat4(1.0f);
-	
-	modelMatrix = glm::scale(modelMatrix, Scale);
-	modelMatrix = glm::rotate(modelMatrix, RotAngle, Rotate);
-	modelMatrix = glm::translate(modelMatrix, Translate);
+	modelMatrix = toMat(Scale, Rotate, RotAngle, Translate);
 
 	modelMatrix =  localMatrix * modelMatrix;
 
@@ -68,10 +66,11 @@ void Chair::draw(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Tr
 }
 void Chair::draw(glm::mat4 Matrix, glm::vec3 color)
 {
+
 	setColor(color);
 	for(int i=0; i<subGeometry->children.size(); ++i)
 	{
-		subGeometry->children.at(i)->visitChildren(Matrix);
+		subGeometry->children.at(i)->visitChildren(Matrix * localMatrix);
 	}
 }
 

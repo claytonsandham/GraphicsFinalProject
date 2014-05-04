@@ -10,6 +10,11 @@ Geometry* Table::cube;
 
 Table::Table(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Translate)
 {
+	localMatrix = glm::mat4(1.0f);
+	localMatrix = glm::scale(localMatrix, Scale);
+	localMatrix = glm::rotate(localMatrix, RotAngle, Rotate);
+	localMatrix = glm::translate(localMatrix, Translate);
+
 	glm::mat4 xform;
 	xform = toMat(Scale, glm::vec3(0,1,0), RotAngle, Translate);
 	Node* table = new Node(xform, NULL);
@@ -68,7 +73,7 @@ void Table::draw(glm::mat4 Matrix, glm::vec3 color)
 	setColor(color);
 	for(int i=0; i<subGeometry->children.size(); ++i)
 	{
-		subGeometry->children.at(i)->visitChildren(Matrix);
+		subGeometry->children.at(i)->visitChildren(Matrix * localMatrix);
 	}
 }
 
