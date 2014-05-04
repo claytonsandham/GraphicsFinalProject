@@ -6,7 +6,7 @@
 */
 #include "Cube.h"
 
-Cube::Cube() { }
+Cube::Cube() {}
 Cube::~Cube() { }
 
 Cube::Cube(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Translate)
@@ -88,5 +88,4 @@ Cube::Cube(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Translat
 	point4(0.5, -0.5, -0.5, 1.0)	//7 //Back //Bottom right
 	*/
 }
-
 

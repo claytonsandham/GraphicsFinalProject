@@ -148,7 +148,7 @@ void Mesh::draw(mat4 Matrix, vec3 color)
 }
 void Mesh::setColor(vec3 color)
 {
-	for (int i = 0; i < faces.size(); ++i)
+	for (int i = 0; i < colors.size(); ++i)
 	{
 		colors[i] = vec3(color.x, color.y, color.z);
 	}

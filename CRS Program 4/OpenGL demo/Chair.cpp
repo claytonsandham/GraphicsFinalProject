@@ -5,18 +5,17 @@
 	Description: This file contains the function definitions for the Table class.
 */
 #include "Chair.h"
-Geometry* Chair::cube;
-
+#include "Cube.h"
 
 Chair::Chair(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Translate)
 {
 	localMatrix = toMat(Scale, Rotate, RotAngle, Translate);
-
+	setCube(new Cube(vec3(1, 1, 1), vec3(0, 1, 0), 0.0f, vec3(0, 0, 0)));
 	glm::mat4 xform;
 	xform = toMat(Scale, glm::vec3(0,1,0), RotAngle, Translate);
 	Node* chair = new Node(xform, NULL);
 
-	xform = toMat(glm::vec3(1, -0.1, 1), glm::vec3(0,1,0), 0.0f, glm::vec3(0, 1, 0));//Top
+	xform = toMat(glm::vec3(1, 0.1, 1), glm::vec3(0,1,0), 0.0f, glm::vec3(0, 1, 0));//Top
 	chair->children.push_back(new Node(xform, cube));
 
 	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(0.45, 0.5, 0.45));//Legs
@@ -48,6 +47,7 @@ Chair::~Chair(void)
 
 void Chair::initialize(unsigned int shaderProgram, unsigned int modelMatrix)
 {
+	cube->initialize(shaderProgram, modelMatrix);
 }
 
 void Chair::draw(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Translate)

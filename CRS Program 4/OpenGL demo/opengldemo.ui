@@ -86,7 +86,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Extrusion1.dat</string>
+     <string>scene2.txt</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_5">

@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #define BUFFER_OFFSET(bytes) ((GLvoid*) (bytes))
 #include "../glm/gtc/matrix_transform.hpp"
+#include "Utility.h"
 #include <string>
 using std::string;
 #include <fstream>
