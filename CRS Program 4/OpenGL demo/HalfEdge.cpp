@@ -146,7 +146,7 @@ void HalfEdge::draw(mat4 Matrix, vec3 color)
 
 
 
-	glDrawElements(GL_TRIANGLES, indexBuf.size(), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_QUADS, indexBuf.size(), GL_UNSIGNED_INT, 0);
 	//glDrawArrays(GL_TRIANGLES, 0, indexBuf.size());
 	glFlush();
 }
