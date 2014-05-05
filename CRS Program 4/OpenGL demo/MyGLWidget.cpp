@@ -27,7 +27,7 @@ void MyGLWidget::initializeGL() {
 	glewInit();
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClearDepth(1.0);
 
 	//Do something similar to this to set up a buffer for colors
