@@ -13,6 +13,9 @@ public:
 	~HEExtrusion(void);
 	void extrude(VertLine polygon);
 	int height;
+
+// <oliver description="added triangulation">
+private : 
+	void triangulate();
+// </oliver>
 };
-
-

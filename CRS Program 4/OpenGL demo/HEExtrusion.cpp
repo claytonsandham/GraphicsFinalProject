@@ -170,4 +170,114 @@ void HEExtrusion::extrude(VertLine base)
 	{
 		top.points[i]->edge = topEdges[i];
 	}
+
+// <oliver description="added triangulation">
+	triangulate();
+// </oliver>
 }
+
+// <oliver description="added triangulation">
+void HEExtrusion::triangulate() {
+	HEEdge *add1, *add2;
+	HEEdge *cur;
+	HEVertex *curVer;
+	HEFace *curFace;
+	HEEdge *needPaired;
+	HEEdge *next;
+	HEEdge *nnext;
+	HEVertex *prevVer;
+
+//Hold new faces until the end
+	vector<HEFace*> tempFaces;
+
+	for(int i = 0; i < faces.size(); ++i) {
+		bool runOnce = false;
+
+		while (true) {
+			if (runOnce == false) {
+				runOnce = true;
+
+			//Establish pointers
+				cur = faces[i]->edge->next;
+				curVer = faces[i]->edge->vertex;
+				next = cur->next;
+				nnext = next->next;
+
+			//New face
+				curFace = new HEFace();
+				curFace->edge = cur;
+				tempFaces.push_back(curFace);
+
+			//New edge
+				add1 = new HEEdge();
+				add1->face = cur->face;
+				add1->next = cur;
+				needPaired = add1;
+				add1->vertex = curVer;
+				addHEEdge(add1);
+
+			//Configure edges
+				next->next = add1;
+
+			//Update pointers
+				cur = nnext;
+				prevVer = next->vertex;
+				next = cur->next;
+			} else if (next->vertex->ID == curVer->ID) { // Last iteration, basically
+			//Keep existing face, already pointing to next
+				// :)
+
+			//New edges
+				add1 = new HEEdge();
+				add1->face = cur->face;
+				add1->next = cur;
+				add1->pair = needPaired;
+				add1->pair->pair = add1;
+				add1->vertex = prevVer;
+				addHEEdge(add1);
+
+			//Configure edges
+				next->next = add1;
+
+			//Last iteration, gladiation!
+				break;
+			} else {
+			//New face
+				curFace = new HEFace();
+				curFace->edge = cur;
+				tempFaces.push_back(curFace);
+
+			//New edges
+				add1 = new HEEdge();
+				add2 = new HEEdge();
+				addHEEdge(add1);
+				addHEEdge(add2);
+				
+			//Configure edges
+				cur->next = add1;
+
+				add2->face = cur->face;
+				add2->next = cur;
+				add2->pair = needPaired;
+				add2->pair->pair = add2;
+				add2->vertex = prevVer;
+
+				add1->face = cur->face;
+				add1->next = add2;
+				needPaired = add1;
+				add1->vertex = curVer;
+
+			//Update pointers
+				prevVer = cur->vertex;
+				cur = next;
+				next = cur->next;
+			}
+		}
+	}
+
+//Commit the new faces
+	for(int i = 0; i < tempFaces.size(); ++i) {
+		addHEFace(tempFaces[i]);
+	}
+}
+// </oliver>

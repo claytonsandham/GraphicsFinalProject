@@ -97,7 +97,8 @@ void HalfEdge::BuildBuffers()
 		}
 		//Normalize this monkey.
 		//verts[i]->normal = vec4(0, 1, 0, 1);
-		verts[i]->normal = normalize(normal);
+		vec3 n = normalize(vec3(normal.x, normal.y, normal.z));
+		verts[i]->normal = vec4(n, 1);
 	}
 
 	//create the other buffers
@@ -144,8 +145,9 @@ void HalfEdge::draw(mat4 Matrix, vec3 color)
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexBuf.size()*sizeof(GLuint), &indexBuf[0], GL_STATIC_DRAW);
 
 
-	glDrawElements(GL_QUADS, indexBuf.size(), GL_UNSIGNED_INT, 0);
-	//glDrawArrays(GL_TRIANGLES, 0, indices.size());
+
+	glDrawElements(GL_TRIANGLES, indexBuf.size(), GL_UNSIGNED_INT, 0);
+	//glDrawArrays(GL_TRIANGLES, 0, indexBuf.size());
 	glFlush();
 }
 void HalfEdge::setColor(vec3 color)

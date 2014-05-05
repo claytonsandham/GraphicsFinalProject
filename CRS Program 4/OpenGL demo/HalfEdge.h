@@ -47,7 +47,7 @@ private:
 	vector<vec4> vertexBuf;
 	vector<vec3> colorBuf;
 	vector<vec4> normalBuf;
-	vector<int> indexBuf;
+	vector<unsigned int> indexBuf;
 
 protected:
 	vector<HEVertex*> verts;
