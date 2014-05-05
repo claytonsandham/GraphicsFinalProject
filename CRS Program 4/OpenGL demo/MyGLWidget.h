@@ -14,6 +14,7 @@
 
 #include "../glm/gtc/matrix_transform.hpp"
 #include "Cube.h"
+#include "HECube.h"
 #include "Table.h"
 #include "Chair.h"
 #include "Node.h"

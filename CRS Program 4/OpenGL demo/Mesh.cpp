@@ -3,23 +3,7 @@
 
 Mesh::Mesh(vec3 Scale, vec3 Rotate, float RotAngle, vec3 Translate)
 {
-	 //Start with identity matrix
-	modelMatrix = glm::mat4(1.0f);
 	
-	localMatrix = glm::mat4(1.0f);
-	localMatrix = glm::scale(localMatrix, Scale);
-	localMatrix = glm::rotate(localMatrix, RotAngle, Rotate);
-	localMatrix = glm::translate(localMatrix, Translate);
-
-	u_modelMatrix = 0;
-	shaderProgram = 0;
-	vertexBuffer = 0;
-	colorBuffer = 0;
-	normalBuffer = 0;
-	indexBuffer = 0;
-	vLocation = 0;
-	vColor = 0;
-	vNormal = 0;
 }
 
 

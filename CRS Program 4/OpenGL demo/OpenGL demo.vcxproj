@@ -179,6 +179,9 @@
     </ClCompile>
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="HalfEdge.cpp" />
+    <ClCompile Include="HalfEdgeDS.cpp" />
+    <ClCompile Include="HECube.cpp" />
+    <ClCompile Include="HEExtrusion.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mesh.cpp" />
@@ -237,6 +240,8 @@
     <ClInclude Include="Face.h" />
     <ClInclude Include="HalfEdge.h" />
     <ClInclude Include="HalfEdgeDS.h" />
+    <ClInclude Include="HECube.h" />
+    <ClInclude Include="HEExtrusion.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="SurfRev.h" />

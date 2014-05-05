@@ -4,51 +4,60 @@
 #include <ctime>
 #include <fstream>
 #include <exception>
+#include <vector>
 
 #include "HalfEdgeDS.h"
-#include "Mesh.h"
+#include "Geometry.h"
 
-using glm::mat4;
-using glm::rotate;
 using glm::vec3;
+using glm::vec4;
+using glm::mat4;
+using glm::normalize;
 using std::exception;
 using std::ifstream;
+using std::vector;
 
-class HalfEdge : Mesh {
+class HalfEdge : public Geometry {
 // Constructors and destructor
 public : 
 	HalfEdge(vec3 scale, vec3 rotate, float rotAngle, vec3 translate);
+	HalfEdge();
 	~HalfEdge();
 
-// Public function interface
+// Geometry Interface
 public : 
-	void import(ifstream& reader);
-	void subDivide(int iterations = 1);
+	void initialize(unsigned int shaderProgram, unsigned int u_modelMatrix);
+    void BuildBuffers();
+	void draw(vec3 Scale, vec3 Rotate, float RotAngle, vec3 Translate);
+    void draw(mat4 Matrix, vec3 color);
+	void setColor(vec3 color);
 
-//Give public access to the data
-public : 
-	HE *start;
+private:
+	GLuint u_modelMatrix;
+	GLuint shaderProgram;
+	GLuint vertexBuffer;
+	GLuint colorBuffer;
+	GLuint normalBuffer;
 
-// Internal "interface" for building the object
-private : 
-	void bufferStuffer();
-	void revolve();
+	GLuint indexBuffer;
+	GLuint vLocation;
+	GLuint vColor;
+	GLuint vNormal;
 
-// Physical attributes of object
-private : 
-	Location loc;
-	float rotation;
-	Scale scale;
-	int slices;
+	vector<vec4> vertexBuf;
+	vector<vec3> colorBuf;
+	vector<vec4> normalBuf;
+	vector<int> indexBuf;
 
-// Edges and vertices
-private : 
-	vector<HEEdge> edges;
-	vector<HEFace> faces;
-	vector<HEVertex> verts;
+protected:
+	vector<HEVertex*> verts;
+	vector<HEEdge*> edges;
+	vector<HEFace*> faces;
+	int addHEVert(HEVertex* v);
+	int addHEFace(HEFace* f);
+	int addHEEdge(HEEdge* e);
+	int vID;
+	int fID;
+	int eID;
 
-// Polyline information
-private : 
-	vector<vec4> polyline;
-	int polylineTotal;
 };
