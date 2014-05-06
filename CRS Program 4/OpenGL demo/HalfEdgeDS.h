@@ -40,8 +40,8 @@ struct HEFace {
 		p1 = edge->next->vertex->position;
 		p2 = edge->next->next->vertex->position;
 
-		glm::vec4 u = p0-p1;
-		glm::vec4 v = p2-p1;
+		glm::vec4 v = p0-p1;
+		glm::vec4 u = p2-p1;
 
 		glm::vec3 n = glm::cross(glm::vec3(u.x, u.y, u.z), glm::vec3(v.x, v.y, v.z));
 		n = glm::normalize(n);

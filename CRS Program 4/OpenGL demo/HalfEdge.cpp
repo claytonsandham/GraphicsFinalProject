@@ -1,6 +1,7 @@
 #include "HalfEdge.h"
 
 HalfEdge::HalfEdge(vec3 Scale, vec3 Rotate, float RotAngle, vec3 Translate)
+	: Geometry()
 {
 	//Start with identity matrix
 	modelMatrix = glm::mat4(1.0f);
@@ -23,7 +24,7 @@ HalfEdge::HalfEdge(vec3 Scale, vec3 Rotate, float RotAngle, vec3 Translate)
 	eID = 0;
 	fID = 0;
 }
-HalfEdge::HalfEdge(){}
+HalfEdge::HalfEdge() : Geometry() {}
 
 HalfEdge::~HalfEdge() { }
 
@@ -43,7 +44,7 @@ void HalfEdge::initialize(unsigned int shaderProgram, unsigned int u_modelMatrix
 	//GLuint vertexBuffer;
 	glGenBuffers(1, &vertexBuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-	glBufferData(GL_ARRAY_BUFFER, vertexBuf.size()*sizeof(vec4), &vertexBuf[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, vertexBuf.size()*sizeof(glm::vec4), &vertexBuf[0], GL_STATIC_DRAW);
 	//this->vertexBuffer = vertexBuffer;
 	
 	vLocation = glGetAttribLocation(shaderProgram, "vs_position");
@@ -54,7 +55,7 @@ void HalfEdge::initialize(unsigned int shaderProgram, unsigned int u_modelMatrix
 	//GLuint colorBuffer;
 	glGenBuffers(1, &colorBuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, colorBuffer);
-	glBufferData(GL_ARRAY_BUFFER, colorBuf.size()*sizeof(vec3), &colorBuf[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, colorBuf.size()*sizeof(glm::vec3), &colorBuf[0], GL_STATIC_DRAW);
 	//this->colorBuffer = colorBuffer;
 
 	vColor = glGetAttribLocation(shaderProgram, "vs_color");
@@ -65,7 +66,7 @@ void HalfEdge::initialize(unsigned int shaderProgram, unsigned int u_modelMatrix
 	//GLuint normalBuffer;
 	glGenBuffers(1, &normalBuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, normalBuffer);
-	glBufferData(GL_ARRAY_BUFFER, normalBuf.size()*sizeof(vec4), &normalBuf[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, normalBuf.size()*sizeof(glm::vec4), &normalBuf[0], GL_STATIC_DRAW);
 	//this->normalBuffer = normalBuffer;
 
 	vNormal = glGetAttribLocation(shaderProgram, "vs_normal");
@@ -98,7 +99,7 @@ void HalfEdge::BuildBuffers()
 		//Normalize this monkey.
 		//verts[i]->normal = vec4(0, 1, 0, 1);
 		vec3 n = normalize(vec3(normal.x, normal.y, normal.z));
-		verts[i]->normal = vec4(n, 1);
+		verts[i]->normal = vec4(n, 0);
 	}
 
 	//create the other buffers
@@ -126,30 +127,33 @@ void HalfEdge::BuildBuffers()
 
 void HalfEdge::draw(vec3 Scale, vec3 Rotate, float RotAngle, vec3 Translate)
 {
-
+	
 }
 void HalfEdge::draw(mat4 Matrix, vec3 color)
 {
+	//glBegin(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	setColor(color);
 
 	modelMatrix = Matrix * localMatrix;
     glUniformMatrix4fv(u_modelMatrix, 1, GL_FALSE, &modelMatrix[0][0]);
-
+	
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-	glBufferData(GL_ARRAY_BUFFER, vertexBuf.size() * sizeof(vec4), &vertexBuf[0], GL_STATIC_DRAW);
+	//glBufferData(GL_ARRAY_BUFFER, vertexBuf.size() * sizeof(vec4), &vertexBuf[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(vLocation, 4, GL_FLOAT, GL_FALSE, 0, 0);
 
 	glBindBuffer(GL_ARRAY_BUFFER, normalBuffer);
-	glBufferData(GL_ARRAY_BUFFER, normalBuf.size() * sizeof(vec4), &normalBuf[0], GL_STATIC_DRAW);
+	//glBufferData(GL_ARRAY_BUFFER, normalBuf.size() * sizeof(vec4), &normalBuf[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(vNormal, 4, GL_FLOAT, GL_FALSE, 0, 0);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexBuf.size()*sizeof(GLuint), &indexBuf[0], GL_STATIC_DRAW);
-
-
-	glDrawElements(GL_QUADS, indexBuf.size(), GL_UNSIGNED_INT, 0);
+	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexBuf.size()*sizeof(GLuint), &indexBuf[0], GL_STATIC_DRAW);
+	
+	glDrawElements(GL_QUADS, indexBuf.size(), GL_UNSIGNED_INT, NULL);
 	//glDrawArrays(GL_TRIANGLES, 0, indices.size());
 	glFlush();
+
+	//glBindBuffer(GL_ARRAY_BUFFER, 0);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 void HalfEdge::setColor(vec3 color)
 {
@@ -166,6 +170,7 @@ void HalfEdge::setColor(vec3 color)
 int HalfEdge::addHEVert(HEVertex* v)
 {
 	v->ID = vID++;
+	v->position.w = 1;
 	verts.push_back(v);
 	return v->ID;
 }

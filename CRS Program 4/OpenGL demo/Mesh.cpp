@@ -131,6 +131,9 @@ void Mesh::draw(mat4 Matrix, vec3 color)
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 	//glDrawArrays(GL_TRIANGLES, 0, indices.size());
 	glFlush();
+
+	//glBindBuffer(GL_ARRAY_BUFFER, 0);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 void Mesh::setColor(vec3 color)
 {
