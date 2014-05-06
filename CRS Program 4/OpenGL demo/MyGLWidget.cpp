@@ -136,8 +136,8 @@ void MyGLWidget::importFile(string fileName)
 			reader >> zScale;
 			if (type == "box")
 			{
-				Cube* newCube;
-				newCube = new Cube(glm::vec3(xScale, yScale, zScale), glm::vec3(0, 1, 0), rot, glm::vec3(xLoc, 0, zLoc));
+				HECube* newCube;
+				newCube = new HECube(glm::vec3(xScale, yScale, zScale), glm::vec3(0, 1, 0), rot, glm::vec3(xLoc, 0, zLoc));
 				newCube->initialize(shaderProgram, u_modelMatrix);
 				Node* newObject = new Node(glm::mat4(1.0f), newCube);
 				sceneGraph[zLoc * xDim + xLoc]->addObject(newObject);

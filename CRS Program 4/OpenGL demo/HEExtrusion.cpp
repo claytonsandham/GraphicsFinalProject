@@ -172,7 +172,7 @@ void HEExtrusion::extrude(VertLine base)
 	}
 
 // <oliver description="added triangulation">
-	triangulate();
+	//triangulate();
 // </oliver>
 }
 

@@ -73,3 +73,8 @@ vector<Face> Extrusion::extrude(Face polygon)
 	}
 	return retFaces;
 }
+
+bool Extrusion::collideWithRay(Ray ray, Ray* reflection, vec3& color, float& reflectivity)
+{
+	return false;
+}
