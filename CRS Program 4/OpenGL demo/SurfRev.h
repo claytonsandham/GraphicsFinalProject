@@ -8,6 +8,7 @@ public:
 	~SurfRev(void);
 	void import(ifstream& reader);
 	vector<Face> rotate(Face polygon);
+	bool collideWithRay(Ray ray, Ray* reflection, vec3& color, float& reflectivity);
 private:
 	int slices;
 };

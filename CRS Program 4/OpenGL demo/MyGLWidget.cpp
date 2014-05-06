@@ -405,3 +405,76 @@ void MyGLWidget::cycleObjects()
 		currentObject->updateTransform();
 		update();
 	}
+
+	void MyGLWidget::rayTrace()
+	{
+		unsigned int width = 800;
+		unsigned int height = 600;
+		float aspect = ((float)width)/height;
+		float fovy = camera.FOV * 3.1415926535/180;
+		float phi = fovy/2;
+		vec4 up = vec4(0,1,0,0);
+		vec4 u = vec4(-1,0,0,0);
+
+		vec4 v = up * tan(phi);
+		vec4 h = -u * tan(phi) * aspect;
+
+		vec4 m = vec4(0,0,-1,1);
+		vec4 e = vec4(0,0,0,1);
+
+		BMP output;
+		output.SetSize(width, height);
+		output.SetBitDepth(24);
+
+
+	
+		for(unsigned int x = 0; x < width; x++) {
+			for(unsigned int y = 0; y < height; y++) {
+				Ray ray;
+				vec4 p = m + (2 * (float)x/(width-1)-1)*h + (2 * (float)y/(height-1)-1) * v;
+				ray.origin = e;
+				ray.direction = (p-e)/length(p-e);
+				//Ray trace stuff here! smooches!
+				vec3 color = traceRay(ray);
+
+				output(x, y)->Red = color.x * 255;
+				output(x, y)->Green = color.y * 255;
+				output(x, y)->Blue = color.z * 255;
+			}
+		}
+
+		output.WriteToFile("output.bmp");
+	}
+
+	vec3 MyGLWidget::traceRay(Ray ray)
+	{
+		Ray* reflectedRay;
+		vec3 color = vec3(1, 0, 0);
+		float reflectivity = 1;
+
+		for(int i=0; i < sceneGraph.size(); ++i)
+		{
+			Node* current = sceneGraph[i];
+			while(current!=NULL)
+			{
+				if(current->geometry)
+				{
+					if (current->geometry->collideWithRay(ray, reflectedRay, color, reflectivity))
+					{
+						if(reflectedRay == NULL)
+						{
+							return vec3(0, 1, 1);
+						}
+						else
+						{
+							return vec3(1, 1, 0);
+							//return (1-reflectivity)*color + reflectivity*traceRay(*reflectedRay);
+						}
+
+					}
+				}
+				current = current->nextObject;
+			}
+		}
+		return vec3(0, 1, 0);
+	}

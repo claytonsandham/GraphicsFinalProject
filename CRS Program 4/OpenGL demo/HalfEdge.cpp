@@ -286,9 +286,11 @@ void HalfEdge::draw(mat4 Matrix, vec3 color)
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
 	//glBufferData(GL_ARRAY_BUFFER, vertexBuf.size() * sizeof(vec4), &vertexBuf[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(vLocation, 4, GL_FLOAT, GL_FALSE, 0, 0);
+	glVertexAttribPointer(vLocation, 4, GL_FLOAT, GL_FALSE, 0, 0);
 
 	glBindBuffer(GL_ARRAY_BUFFER, normalBuffer);
 	//glBufferData(GL_ARRAY_BUFFER, normalBuf.size() * sizeof(vec4), &normalBuf[0], GL_STATIC_DRAW);
+	glVertexAttribPointer(vNormal, 4, GL_FLOAT, GL_FALSE, 0, 0);
 	glVertexAttribPointer(vNormal, 4, GL_FLOAT, GL_FALSE, 0, 0);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
@@ -298,8 +300,10 @@ void HalfEdge::draw(mat4 Matrix, vec3 color)
 	//glDrawArrays(GL_TRIANGLES, 0, indices.size());
 	glFlush();
 
-	//glBindBuffer(GL_ARRAY_BUFFER, 0);
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
+	glDrawElements(GL_TRIANGLES, indexBuf.size(), GL_UNSIGNED_INT, 0);
+	//glDrawArrays(GL_TRIANGLES, 0, indices.size());
+	glFlush();
 }
 void HalfEdge::setColor(vec3 color)
 {
@@ -331,4 +335,8 @@ int HalfEdge::addHEEdge(HEEdge* e)
 	e->ID = eID++;
 	edges.push_back(e);
 	return e->ID;
+}
+bool HalfEdge::collideWithRay(Ray ray, Ray* reflection, vec3& color, float& reflectivity)
+{
+	return false;
 }

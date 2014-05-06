@@ -15,6 +15,7 @@ public:
 	void setColor(glm::vec3 color);
 	Geometry* cube;
 	void setCube(Geometry* _cube);
+	bool collideWithRay(Ray ray, Ray* reflection, vec3& color, float& reflectivity);
 private:
 	Node* subGeometry;
 };

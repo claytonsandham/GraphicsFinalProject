@@ -90,3 +90,8 @@ void Table::setColor(glm::vec3 color)
 		subGeometry->children.at(i)->setColor(color);
 	}
 }
+
+bool Table::collideWithRay(Ray ray, Ray* reflection, vec3& color, float& reflectivity)
+{
+	return false;
+}

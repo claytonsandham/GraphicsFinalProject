@@ -146,3 +146,7 @@ void Mesh::setColor(vec3 color)
 	//glBufferData(GL_ARRAY_BUFFER, colors.size()* sizeof(vec3), &colors[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(vColor, 3, GL_FLOAT, GL_FALSE, 0, 0);
 }
+bool Mesh::collideWithRay(Ray ray, Ray* reflection, vec3& color, float& reflectivity)
+{
+	return false;
+}

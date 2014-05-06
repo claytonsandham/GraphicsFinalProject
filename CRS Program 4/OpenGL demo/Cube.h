@@ -13,6 +13,7 @@ public:
 	Cube();
 	Cube(vec3 Scale, vec3 Rotate, float RotAngle, vec3 Translate);
 	~Cube(void);
+	bool collideWithRay(Ray ray, Ray* reflection, vec3& color, float& reflectivity);
 private:
 	float height;
 };

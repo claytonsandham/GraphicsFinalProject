@@ -89,3 +89,8 @@ vector<Face> SurfRev::rotate(Face polygon)
 
 
 }
+
+bool SurfRev::collideWithRay(Ray ray, Ray* reflection, vec3& color, float& reflectivity)
+{
+	return false;
+}

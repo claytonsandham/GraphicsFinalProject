@@ -85,3 +85,8 @@ void Chair::setColor(glm::vec3 color)
 		subGeometry->children.at(i)->setColor(color);
 	}
 }
+
+bool Chair::collideWithRay(Ray ray, Ray* reflection, vec3& color, float& reflectivity)
+{
+	return false;
+}

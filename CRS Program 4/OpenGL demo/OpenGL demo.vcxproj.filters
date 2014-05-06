@@ -33,6 +33,12 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Source Files\RayTracing">
+      <UniqueIdentifier>{32c1f6a0-65b0-4f4e-ab68-05cc534a5bb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\RayTracing">
+      <UniqueIdentifier>{1a0d89ce-3daf-404b-88b5-0d00a5634361}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -116,6 +122,15 @@
     <ClCompile Include="HalfEdgeDS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Ray.cpp">
+      <Filter>Source Files\RayTracing</Filter>
+    </ClCompile>
+    <ClCompile Include="EasyBMP.cpp">
+      <Filter>Source Files\RayTracing</Filter>
+    </ClCompile>
+    <ClCompile Include="stubs.cpp">
+      <Filter>Source Files\RayTracing</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="opengldemo.h">
@@ -185,6 +200,24 @@
     </ClInclude>
     <ClInclude Include="HECube.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ray.h">
+      <Filter>Header Files\RayTracing</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyBMP.h">
+      <Filter>Header Files\RayTracing</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyBMP_BMP.h">
+      <Filter>Header Files\RayTracing</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyBMP_DataStructures.h">
+      <Filter>Header Files\RayTracing</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyBMP_VariousBMPutilities.h">
+      <Filter>Header Files\RayTracing</Filter>
+    </ClInclude>
+    <ClInclude Include="stubs.h">
+      <Filter>Header Files\RayTracing</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
