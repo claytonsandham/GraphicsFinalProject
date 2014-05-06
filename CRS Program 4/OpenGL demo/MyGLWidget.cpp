@@ -27,7 +27,7 @@ void MyGLWidget::initializeGL() {
 	glewInit();
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClearDepth(1.0);
 
 	//Do something similar to this to set up a buffer for colors
@@ -136,8 +136,8 @@ void MyGLWidget::importFile(string fileName)
 			reader >> zScale;
 			if (type == "box")
 			{
-				HECube* newCube;
-				newCube = new HECube(glm::vec3(xScale, yScale, zScale), glm::vec3(0, 1, 0), rot, glm::vec3(xLoc, 0, zLoc));
+				Cube* newCube;
+				newCube = new Cube(glm::vec3(xScale, yScale, zScale), glm::vec3(0, 1, 0), rot, glm::vec3(xLoc, 0, zLoc));
 				newCube->initialize(shaderProgram, u_modelMatrix);
 				Node* newObject = new Node(glm::mat4(1.0f), newCube);
 				sceneGraph[zLoc * xDim + xLoc]->addObject(newObject);
@@ -404,4 +404,77 @@ void MyGLWidget::cycleObjects()
 			currentObject->sY -= 0.1;
 		currentObject->updateTransform();
 		update();
+	}
+
+	void MyGLWidget::rayTrace()
+	{
+		unsigned int width = 800;
+		unsigned int height = 600;
+		float aspect = ((float)width)/height;
+		float fovy = camera.FOV * 3.1415926535/180;
+		float phi = fovy/2;
+		vec4 up = vec4(0,1,0,0);
+		vec4 u = vec4(-1,0,0,0);
+
+		vec4 v = up * tan(phi);
+		vec4 h = -u * tan(phi) * aspect;
+
+		vec4 m = vec4(0,0,-1,1);
+		vec4 e = vec4(0,0,0,1);
+
+		BMP output;
+		output.SetSize(width, height);
+		output.SetBitDepth(24);
+
+
+	
+		for(unsigned int x = 0; x < width; x++) {
+			for(unsigned int y = 0; y < height; y++) {
+				Ray ray;
+				vec4 p = m + (2 * (float)x/(width-1)-1)*h + (2 * (float)y/(height-1)-1) * v;
+				ray.origin = e;
+				ray.direction = (p-e)/length(p-e);
+				//Ray trace stuff here! smooches!
+				vec3 color = traceRay(ray);
+
+				output(x, y)->Red = color.x * 255;
+				output(x, y)->Green = color.y * 255;
+				output(x, y)->Blue = color.z * 255;
+			}
+		}
+
+		output.WriteToFile("output.bmp");
+	}
+
+	vec3 MyGLWidget::traceRay(Ray ray)
+	{
+		Ray* reflectedRay;
+		vec3 color = vec3(1, 0, 0);
+		float reflectivity = 1;
+
+		for(int i=0; i < sceneGraph.size(); ++i)
+		{
+			Node* current = sceneGraph[i];
+			while(current!=NULL)
+			{
+				if(current->geometry)
+				{
+					if (current->geometry->collideWithRay(ray, reflectedRay, color, reflectivity))
+					{
+						if(reflectedRay == NULL)
+						{
+							return vec3(0, 1, 1);
+						}
+						else
+						{
+							return vec3(1, 1, 0);
+							//return (1-reflectivity)*color + reflectivity*traceRay(*reflectedRay);
+						}
+
+					}
+				}
+				current = current->nextObject;
+			}
+		}
+		return vec3(0, 1, 0);
 	}

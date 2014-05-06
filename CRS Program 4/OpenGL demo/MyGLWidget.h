@@ -28,9 +28,14 @@
 #include "Extrusion.h"
 #include "SurfRev.h"
 
+//Ray Tracing stuff
+#include "Ray.h"
+#include "EasyBMP.h"
+
 using std::string;
 using std::ifstream;
 using std::vector;
+using glm::length;
 class MyGLWidget : public QGLWidget
 {
 	Q_OBJECT
@@ -66,6 +71,7 @@ private:
 	Node*** grid;
 	Node* currentObject;
 	int currentLocation;
+	vec3 traceRay(Ray ray);
 
 public slots:
 	void up(void);
@@ -97,4 +103,7 @@ public slots:
 	void scaleYPlus();
 	void scaleYMinus();
 
+	void rayTrace();
+
+	
 };

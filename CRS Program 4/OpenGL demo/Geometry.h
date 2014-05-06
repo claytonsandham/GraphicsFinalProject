@@ -17,7 +17,8 @@
 using std::string;
 #include <fstream>
 using std::ifstream;
-
+#include "Ray.h"
+#include "stubs.h"
 
 class Geometry
 {
@@ -28,9 +29,10 @@ public:
 	virtual void draw(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Translate) = 0;
 	virtual void draw(glm::mat4 Matrix, glm::vec3 color) = 0;
 	virtual void setColor(glm::vec3 color) = 0;
-
-protected:
 	glm::mat4 modelMatrix;
+	virtual bool collideWithRay(Ray ray, Ray* reflection, vec3& color, float& reflectivity) = 0;
+protected:
+	
     glm::mat4 localMatrix;
 
 };

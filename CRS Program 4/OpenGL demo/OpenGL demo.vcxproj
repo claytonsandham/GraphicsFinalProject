@@ -140,6 +140,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Chair.cpp" />
     <ClCompile Include="Cube.cpp" />
+    <ClCompile Include="EasyBMP.cpp" />
     <ClCompile Include="Extrusion.cpp" />
     <ClCompile Include="Face.cpp" />
     <ClCompile Include="FileTextBox.cpp" />
@@ -188,6 +189,8 @@
     <ClCompile Include="MyGLWidget.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="opengldemo.cpp" />
+    <ClCompile Include="Ray.cpp" />
+    <ClCompile Include="stubs.cpp" />
     <ClCompile Include="SurfRev.cpp" />
     <ClCompile Include="Table.cpp" />
     <ClCompile Include="Utility.cpp" />
@@ -236,6 +239,10 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Chair.h" />
     <ClInclude Include="Cube.h" />
+    <ClInclude Include="EasyBMP.h" />
+    <ClInclude Include="EasyBMP_BMP.h" />
+    <ClInclude Include="EasyBMP_DataStructures.h" />
+    <ClInclude Include="EasyBMP_VariousBMPutilities.h" />
     <ClInclude Include="Extrusion.h" />
     <ClInclude Include="Face.h" />
     <ClInclude Include="HalfEdge.h" />
@@ -244,6 +251,8 @@
     <ClInclude Include="HEExtrusion.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Ray.h" />
+    <ClInclude Include="stubs.h" />
     <ClInclude Include="SurfRev.h" />
     <ClInclude Include="Table.h" />
     <ClInclude Include="Utility.h" />

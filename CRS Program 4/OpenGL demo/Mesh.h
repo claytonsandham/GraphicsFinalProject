@@ -11,7 +11,7 @@ public:
     void draw(vec3 Scale, vec3 Rotate, float RotAngle, vec3 Translate);
     void draw(mat4 Matrix, vec3 color);
 	void setColor(vec3 color);
-
+	virtual bool collideWithRay(Ray ray, Ray* reflection, vec3& color, float& reflectivity);
 protected:
 	GLuint u_modelMatrix;
 	GLuint shaderProgram;

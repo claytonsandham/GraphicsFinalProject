@@ -427,6 +427,19 @@
      <string>-&gt;</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_27">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>530</y>
+      <width>181</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ray Trace</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -482,6 +495,7 @@
     <slot>scaleZMinus()</slot>
     <slot>scaleYPlus()</slot>
     <slot>scaleYMinus()</slot>
+    <slot>rayTrace()</slot>
    </slots>
   </customwidget>
   <customwidget>
@@ -725,8 +739,8 @@
    <slot>cycleObjects()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>63</x>
-     <y>228</y>
+     <x>670</x>
+     <y>333</y>
     </hint>
     <hint type="destinationlabel">
      <x>140</x>
@@ -923,6 +937,22 @@
     <hint type="destinationlabel">
      <x>651</x>
      <y>304</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_27</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>rayTrace()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>330</x>
+     <y>566</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>312</x>
+     <y>410</y>
     </hint>
    </hints>
   </connection>

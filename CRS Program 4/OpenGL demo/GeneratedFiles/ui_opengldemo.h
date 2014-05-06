@@ -62,6 +62,7 @@ public:
     QLabel *label_4;
     QPushButton *pushButton_15;
     QPushButton *pushButton_26;
+    QPushButton *pushButton_27;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -169,6 +170,9 @@ public:
         pushButton_26 = new QPushButton(centralWidget);
         pushButton_26->setObjectName(QStringLiteral("pushButton_26"));
         pushButton_26->setGeometry(QRect(720, 220, 25, 75));
+        pushButton_27 = new QPushButton(centralWidget);
+        pushButton_27->setObjectName(QStringLiteral("pushButton_27"));
+        pushButton_27->setGeometry(QRect(290, 530, 181, 23));
         OpenGLdemoClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(OpenGLdemoClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -209,6 +213,7 @@ public:
         QObject::connect(pushButton_25, SIGNAL(clicked()), widget, SLOT(scaleZMinus()));
         QObject::connect(pushButton_15, SIGNAL(clicked()), widget, SLOT(rotateMinus()));
         QObject::connect(pushButton_26, SIGNAL(clicked()), widget, SLOT(rotatePlus()));
+        QObject::connect(pushButton_27, SIGNAL(clicked()), widget, SLOT(rayTrace()));
 
         QMetaObject::connectSlotsByName(OpenGLdemoClass);
     } // setupUi
@@ -247,6 +252,7 @@ public:
         label_4->setText(QApplication::translate("OpenGLdemoClass", "Object Rotation", 0));
         pushButton_15->setText(QApplication::translate("OpenGLdemoClass", "<-", 0));
         pushButton_26->setText(QApplication::translate("OpenGLdemoClass", "->", 0));
+        pushButton_27->setText(QApplication::translate("OpenGLdemoClass", "Ray Trace", 0));
     } // retranslateUi
 
 };
