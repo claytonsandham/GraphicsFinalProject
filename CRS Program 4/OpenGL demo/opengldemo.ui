@@ -440,6 +440,27 @@
      <string>Ray Trace</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_28">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>390</y>
+      <width>81</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Sub-divide algorithm is in place, but unavailable for execution due to last minute complications.</string>
+    </property>
+    <property name="text">
+     <string>Sub Divide
+(Hover for
+tooltip)</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

@@ -33,7 +33,7 @@ public :
     void draw(mat4 Matrix, vec3 color);
 	void setColor(vec3 color);
 	bool collideWithRay(Ray ray, Ray* reflection, vec3& color, float& reflectivity);
-	void subDivide(int iters = 1);
+	virtual void subDivide(int iters = 1);
 
 private:
 	GLuint u_modelMatrix;

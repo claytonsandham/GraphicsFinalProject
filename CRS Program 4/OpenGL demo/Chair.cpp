@@ -5,12 +5,12 @@
 	Description: This file contains the function definitions for the Table class.
 */
 #include "Chair.h"
-#include "Cube.h"
+#include "HECube.h"
 
 Chair::Chair(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Translate)
 {
 	localMatrix = toMat(Scale, Rotate, RotAngle, Translate);
-	setCube(new Cube(vec3(1, 1, 1), vec3(0, 1, 0), 0.0f, vec3(0, 0, 0)));
+	setCube(new HECube(vec3(1, 1, 1), vec3(0, 1, 0), 0.0f, vec3(0, 0, 0)));
 	glm::mat4 xform;
 	xform = toMat(Scale, glm::vec3(0,1,0), RotAngle, Translate);
 	Node* chair = new Node(xform, NULL);
@@ -18,15 +18,15 @@ Chair::Chair(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Transl
 	xform = toMat(glm::vec3(1, 0.1, 1), glm::vec3(0,1,0), 0.0f, glm::vec3(0, 1, 0));//Top
 	chair->children.push_back(new Node(xform, cube));
 
-	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(0.45, 0.5, 0.45));//Legs
+	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(0.45, 0, 0.45));//Legs
 	chair->children.push_back(new Node(xform, cube));
-	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(-0.45, 0.5, 0.45));
+	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(-0.45, 0, 0.45));
 	chair->children.push_back(new Node(xform, cube));
-	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(0.45, 0.5, -0.45));
+	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(0.45, 0, -0.45));
 	chair->children.push_back(new Node(xform, cube));
-	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(-0.45, 0.5, -0.45));
+	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(-0.45, 0, -0.45));
 	chair->children.push_back(new Node(xform, cube));
-	xform = toMat(glm::vec3(1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(0, 1.5, -0.45));//Back
+	xform = toMat(glm::vec3(1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(0, 1, -0.45));//Back
 	chair->children.push_back(new Node(xform, cube));
 
 	subGeometry = chair;

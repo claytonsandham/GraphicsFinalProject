@@ -5,12 +5,12 @@
 	Description: This file contains the function definitions for the Table class.
 */
 #include "Table.h"
-#include "Cube.h"
+#include "HECube.h"
 
 
 Table::Table(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Translate)
 {
-	setCube(new Cube(vec3(1, 1, 1), vec3(0, 1, 0), 0.0f, vec3(0, 0, 0)));
+	setCube(new HECube(vec3(1, 1, 1), vec3(0, 1, 0), 0.0f, vec3(0, 0, 0)));
 	localMatrix = glm::mat4(1.0f);
 	localMatrix = glm::scale(localMatrix, Scale);
 	localMatrix = glm::rotate(localMatrix, RotAngle, Rotate);
@@ -23,13 +23,13 @@ Table::Table(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Transl
 	xform = toMat(glm::vec3(1, 0.1, 1), glm::vec3(0,1,0), 0.0f, glm::vec3(0, 1, 0));//Top
 	table->children.push_back(new Node(xform, cube));
 
-	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(0.45, 0.5, 0.45));//Legs
+	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(0.45, 0, 0.45));//Legs
 	table->children.push_back(new Node(xform, cube));
-	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(-0.45, 0.5, 0.45));
+	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(-0.45, 0, 0.45));
 	table->children.push_back(new Node(xform, cube));
-	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(0.45, 0.5, -0.45));
+	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(0.45, 0, -0.45));
 	table->children.push_back(new Node(xform, cube));
-	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(-0.45, 0.5, -0.45));
+	xform = toMat(glm::vec3(0.1, 1, 0.1), glm::vec3(0,1,0), 0.0f, glm::vec3(-0.45, 0, -0.45));
 	table->children.push_back(new Node(xform, cube));
 	subGeometry = table;
 }

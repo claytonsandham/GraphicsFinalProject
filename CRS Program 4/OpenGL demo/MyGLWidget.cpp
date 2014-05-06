@@ -145,8 +145,9 @@ void MyGLWidget::importFile(string fileName)
 			}
 			if (type == "sphere")
 			{
-				Cube* newSphere; //change to sphere once implemented (also below)
-				newSphere = new Cube(glm::vec3(xScale, yScale, zScale), glm::vec3(0, 1, 0), rot, glm::vec3(xLoc, 0, zLoc));
+				HECube* newSphere;
+				newSphere = new HECube(glm::vec3(xScale, yScale, zScale), glm::vec3(0, 1, 0), rot, glm::vec3(xLoc, 0, zLoc));
+				newSphere->initialize(shaderProgram, u_modelMatrix);
 				Node* newObject = new Node(glm::mat4(1.0f), newSphere);
 				sceneGraph[zLoc * xDim + xLoc]->addObject(newObject);
 			}

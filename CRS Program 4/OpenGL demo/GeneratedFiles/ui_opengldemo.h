@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'opengldemo.ui'
 **
-** Created by: Qt User Interface Compiler version 5.2.0
+** Created by: Qt User Interface Compiler version 5.2.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -63,6 +63,7 @@ public:
     QPushButton *pushButton_15;
     QPushButton *pushButton_26;
     QPushButton *pushButton_27;
+    QPushButton *pushButton_28;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -173,6 +174,10 @@ public:
         pushButton_27 = new QPushButton(centralWidget);
         pushButton_27->setObjectName(QStringLiteral("pushButton_27"));
         pushButton_27->setGeometry(QRect(290, 530, 181, 23));
+        pushButton_28 = new QPushButton(centralWidget);
+        pushButton_28->setObjectName(QStringLiteral("pushButton_28"));
+        pushButton_28->setEnabled(true);
+        pushButton_28->setGeometry(QRect(670, 390, 81, 81));
         OpenGLdemoClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(OpenGLdemoClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -253,6 +258,12 @@ public:
         pushButton_15->setText(QApplication::translate("OpenGLdemoClass", "<-", 0));
         pushButton_26->setText(QApplication::translate("OpenGLdemoClass", "->", 0));
         pushButton_27->setText(QApplication::translate("OpenGLdemoClass", "Ray Trace", 0));
+#ifndef QT_NO_TOOLTIP
+        pushButton_28->setToolTip(QApplication::translate("OpenGLdemoClass", "Sub-divide algorithm is in place, but unavailable for execution due to last minute complications.", 0));
+#endif // QT_NO_TOOLTIP
+        pushButton_28->setText(QApplication::translate("OpenGLdemoClass", "Sub Divide\n"
+"(Hover for\n"
+"tooltip)", 0));
     } // retranslateUi
 
 };

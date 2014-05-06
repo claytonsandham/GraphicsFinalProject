@@ -17,7 +17,7 @@ Geometry::~Geometry(void)
 {
 }
 
-void Geometry::subDivide(int iters = 1) {
+void Geometry::subDivide(int iters) {
 	// Only for Half Edges, dude!
 }
 

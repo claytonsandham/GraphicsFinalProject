@@ -61,7 +61,7 @@ glm::vec4 HalfEdge::centroid(HEFace *face) {
 	return out;
 }
 
-void HalfEdge::subDivide(int iters = 1) {
+void HalfEdge::subDivide(int iters) {
 	HEFace *currentFace;
 
 	for(int i = 0; i < faces.size(); ++i) {
@@ -122,7 +122,7 @@ void HalfEdge::subDivide(int iters = 1) {
 		addHEVert(faceVertex);
 
 		HEVertex *curVert = startHalfEdge->vertex;
-		HEEdge *curHalfEdge = startHalfEdge->next;
+		curHalfEdge = startHalfEdge->next;
 		HEEdge *firstEdge = NULL;
 		HEFace *newFace;
 		HEEdge *prevHalfEdge = NULL;
