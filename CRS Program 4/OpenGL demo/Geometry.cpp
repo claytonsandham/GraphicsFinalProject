@@ -16,3 +16,17 @@ Geometry::Geometry(void)
 Geometry::~Geometry(void)
 {
 }
+
+void Geometry::subDivide(int iters = 1) {
+	// Only for Half Edges, dude!
+}
+
+glm::vec4 Geometry::avg(glm::vec4 &v1, glm::vec4 &v2) {
+	glm::vec4 out;
+	out.x = (v1.x + v2.x) / 2.0f;
+	out.y = (v1.y + v2.y) / 2.0f;
+	out.z = (v1.z + v2.z) / 2.0f;
+	out.w = 1.0f;
+
+	return out;
+}

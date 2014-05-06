@@ -28,9 +28,11 @@ public :
 public : 
 	void initialize(unsigned int shaderProgram, unsigned int u_modelMatrix);
     void BuildBuffers();
+	glm::vec4 centroid(HEFace* face);
 	void draw(vec3 Scale, vec3 Rotate, float RotAngle, vec3 Translate);
     void draw(mat4 Matrix, vec3 color);
 	void setColor(vec3 color);
+	void subDivide(int iters = 1);
 
 private:
 	GLuint u_modelMatrix;

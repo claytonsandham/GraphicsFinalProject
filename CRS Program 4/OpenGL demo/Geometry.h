@@ -28,10 +28,12 @@ public:
 	virtual void draw(glm::vec3 Scale, glm::vec3 Rotate, float RotAngle, glm::vec3 Translate) = 0;
 	virtual void draw(glm::mat4 Matrix, glm::vec3 color) = 0;
 	virtual void setColor(glm::vec3 color) = 0;
+	virtual void subDivide(int iters = 1);
 
 protected:
 	glm::mat4 modelMatrix;
     glm::mat4 localMatrix;
 
+	glm::vec4 avg(glm::vec4 &p1, glm::vec4 &p2);
 };
 

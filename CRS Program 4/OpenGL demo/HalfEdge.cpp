@@ -28,6 +28,152 @@ HalfEdge::HalfEdge() : Geometry() {}
 
 HalfEdge::~HalfEdge() { }
 
+glm::vec4 HalfEdge::centroid(HEFace *face) {
+	HEEdge *start = face->edge;
+	HEEdge *cur = start;
+
+	glm::vec4 out;
+	out.x = 0.0f;
+	out.y = 0.0f;
+	out.z = 0.0f;
+	out.w = 1.0f;
+
+	double total = 0;
+	vector<glm::vec4> vert;
+
+	do {
+		vert.push_back(cur->vertex->position);
+		cur = cur->next;
+	} while(start->ID != cur->ID);
+
+	total = static_cast<double>(vert.size());
+
+	for(int i = 0; i < vert.size(); ++i) {
+		out.x += vert[i].x;
+		out.y += vert[i].y;
+		out.z += vert[i].z;
+	}
+
+	out.x /= total;
+	out.y /= total;
+	out.z /= total;
+
+	return out;
+}
+
+void HalfEdge::subDivide(int iters = 1) {
+	HEFace *currentFace;
+
+	for(int i = 0; i < faces.size(); ++i) {
+		currentFace = faces[i];
+		currentFace->subDivisions++;
+		int edgeCount = 0;
+
+		HEEdge *startHalfEdge = currentFace->edge;
+		HEEdge *curHalfEdge = startHalfEdge;
+		HEEdge *nextHalfEdge = curHalfEdge->next;
+		bool ranOnce = false;
+
+		while (curHalfEdge->ID != startHalfEdge->ID && ranOnce == true) {
+			ranOnce = true;
+			++edgeCount;
+
+			if (nextHalfEdge->pair->face->subDivisions == currentFace->subDivisions) {
+				// Already done Bobo!
+			} else {
+				vec4 average = avg(curHalfEdge->vertex->position, nextHalfEdge->vertex->position);
+				HEVertex *newVertex = new HEVertex();
+				newVertex->position = average;
+				edgeCount++;
+				addHEVert(newVertex);
+
+				HEEdge *newHalfEdge = new HEEdge();
+				newHalfEdge->face = currentFace;
+				newHalfEdge->next = nextHalfEdge->next;
+				newHalfEdge->vertex = nextHalfEdge->vertex;
+				addHEEdge(newHalfEdge);
+
+				nextHalfEdge->next = newHalfEdge;
+				nextHalfEdge->vertex = newVertex;
+
+				nextHalfEdge->pair->vertex = newVertex;
+
+				newHalfEdge->pair = nextHalfEdge->pair;
+				nextHalfEdge->pair = newHalfEdge;
+
+				HEEdge *newOtherHalfEdge = new HEEdge();
+				newOtherHalfEdge->face = nextHalfEdge->pair->face;
+				newOtherHalfEdge->next = nextHalfEdge->pair->next;
+				newOtherHalfEdge->pair = nextHalfEdge;
+				newOtherHalfEdge->vertex = curHalfEdge->vertex;
+				addHEEdge(newOtherHalfEdge);
+
+				newHalfEdge->pair->next = newOtherHalfEdge;
+				nextHalfEdge->pair = newOtherHalfEdge;
+			}
+
+			curHalfEdge = nextHalfEdge->next;
+			nextHalfEdge = curHalfEdge->next;
+		}
+
+		glm::vec4 cent = centroid(currentFace);
+		HEVertex *faceVertex = new HEVertex();
+		faceVertex->position = cent;
+		addHEVert(faceVertex);
+
+		HEVertex *curVert = startHalfEdge->vertex;
+		HEEdge *curHalfEdge = startHalfEdge->next;
+		HEEdge *firstEdge = NULL;
+		HEFace *newFace;
+		HEEdge *prevHalfEdge = NULL;
+
+		for(int i = 0; i < edgeCount; ++i) {
+			if (i != edgeCount - 1) {
+				newFace = new HEFace();
+				addHEFace(newFace);
+			} else {
+				newFace = currentFace;
+			}
+
+			HEEdge *edgeOne = new HEEdge();
+			HEEdge *edgeTwo = curHalfEdge;
+			HEEdge *edgeThree = new HEEdge();
+
+			addHEEdge(edgeOne);
+			addHEEdge(edgeThree);
+
+			if (i == 0)
+				firstEdge = edgeOne;
+
+			edgeOne->face = newFace;
+			edgeOne->next = edgeTwo;
+
+			if (prevHalfEdge != NULL) {
+				edgeOne->pair = prevHalfEdge;
+				prevHalfEdge->pair = edgeOne;
+			}
+
+			edgeOne->vertex = curVert;
+
+			curVert = edgeTwo->vertex;
+			curHalfEdge = edgeTwo->next;
+
+			edgeThree->face = newFace;
+			edgeThree->next = edgeOne;
+
+			
+			if (i == edgeCount - 1) {
+				edgeThree->pair = firstEdge;
+				firstEdge->pair = edgeThree;
+			}
+
+			edgeThree->vertex->position = cent;
+
+			prevHalfEdge = edgeThree;
+		}
+	}
+}
+
 void HalfEdge::initialize(unsigned int shaderProgram, unsigned int u_modelMatrix)
 {
 	vertexBuf.clear();

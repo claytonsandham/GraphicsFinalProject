@@ -28,11 +28,12 @@ public :
 };
 
 struct HEFace {
-	HEFace() : ID(0) { }
+	HEFace() : ID(0), subDivisions(0) { }
 
 	HEEdge *edge;
 	glm::vec4 normal;
 	int ID;
+	int subDivisions;
 	glm::vec4 getNormal()
 	{
 		glm::vec4 p0, p1, p2;
